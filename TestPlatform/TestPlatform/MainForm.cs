@@ -47,7 +47,8 @@ namespace TestPlatform
         byte ProFrameHead = 0x4B, ProFrameEnd = 0xB4;
         const byte PRO_CMD_CONNECT = 0x01;                  //联机
         const byte PRO_CMD_FB_CONNECT = 0x02;               //联机反馈
-        const byte PRO_CMD_MONITOR_VAR_BIT = 51;                  //监控命令
+        const byte PRO_CMD_RENEW_WARN_INFO = 0x21;          //提交报警码
+        								
         #endregion
         #region //系统启动
         public MainForm()
@@ -1094,7 +1095,7 @@ namespace TestPlatform
         #endregion
         #region //串口解码线程
         /// <summary>
-        /// 
+        /// 串口解码线程
         /// </summary>
         private void IapRxProcessThread()
         {
@@ -1204,17 +1205,17 @@ namespace TestPlatform
                             DispConnectedImage(true);
                             if (ConsoleWindowOpenFlag == true) Console.WriteLine("PRO_CMD_FB_CONNECT BoardRunSenond:");
                             break;
-                        case PRO_CMD_MONITOR_VAR_BIT:
+                        case PRO_CMD_RENEW_WARN_INFO:
 
-                            for (int i = 0; i < ParaLength-2; i++)
+                            for (int i = 0; i < ParaLength-3; i++)
                             {
-                                MonitorVarArray[i] = ProFrameBuff[i + 6];
+                                MonitorVarArray[i] = ProFrameBuff[i + 7];
                                 if (ConsoleWindowOpenFlag == true) Console.Write(" " + MonitorVarArray[i].ToString("X2"));
                             }
                             Console.WriteLine();Console.WriteLine("-------------------------------");
                             DecodeDataToCheckBox(MonitorVarArray, 8);
-                            string message = logDataFormat + "[" + (ParaLength-2).ToString("X2")+ " ";       //参数长度包含命令及其反码
-                            for (int i = 0; i < ParaLength - 2; i++) 
+                            string message = logDataFormat + "[" + (ParaLength-3).ToString("X2")+ " ";       //参数长度包含命令及其反码
+                            for (int i = 0; i < ParaLength - 3; i++) 
                             {
                                 message += MonitorVarArray[i].ToString("X2") + " ";
                             }
@@ -1397,6 +1398,8 @@ namespace TestPlatform
 
         private void btnConnectDevice_Click(object sender, EventArgs e)
         {
+            DeviceConnectFlag = false;
+            DispConnectedImage(false);
             ComTx1Byte(cmdLineNum,PRO_CMD_CONNECT, 0);
         }
 
@@ -1425,17 +1428,18 @@ namespace TestPlatform
         
         private void btnGenerateTestData_Click(object sender, EventArgs e)
         {
-            byte[] data = new byte[8];
+            byte[] data = new byte[9];
             //RenewDictionaryKeyToUI();
             //DecodeCfgFile();
             //RenewDictionaryKeyToUI();
             //ComTx1Byte(cmdLineNum++, PRO_CMD_CONNECT, 5);
             para++;
-            for (int i = 0; i < 8; i++)
+            data[0] = 1;            //开关型
+            for (int i = 1; i < 9; i++)
             {
                 data[i] = para;
             }
-            ComTxNU8(cmdLineNum++, PRO_CMD_MONITOR_VAR_BIT, data, 8,true);
+            ComTxNU8(cmdLineNum++, PRO_CMD_RENEW_WARN_INFO, data, 9, true);
         }
         
         private void btnSaveLog_Click(object sender, EventArgs e)

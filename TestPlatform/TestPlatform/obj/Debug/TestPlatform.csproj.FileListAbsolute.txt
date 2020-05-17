@@ -17,12 +17,7 @@ E:\design\vs2012\MergeBin\TestPlatform\obj\Debug\TestPlatform.csprojResolveAssem
 E:\design\vs2012\MergeBin\TestPlatform\obj\Debug\TestPlatform.MainForm.resources
 E:\design\vs2012\MergeBin\TestPlatform\obj\Debug\TestPlatform.Properties.Resources.resources
 E:\design\vs2012\MergeBin\TestPlatform\obj\Debug\TestPlatform.csproj.GenerateResource.Cache
-E:\design\taotiao\ashare\TestPlatform\bin\Debug\TestPlatform.exe.config
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.exe
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.pdb
-E:\design\taotiao\ashare\TestPlatform\bin\Debug\TestPlatform.exe
-E:\design\taotiao\ashare\TestPlatform\bin\Debug\TestPlatform.pdb
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.csprojResolveAssemblyReference.cache
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.MainForm.resources
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.Properties.Resources.resources
-E:\design\taotiao\ashare\TestPlatform\obj\Debug\TestPlatform.csproj.GenerateResource.Cache
+E:\design\vs2012\MergeBin\TestPlatform\obj\Debug\TestPlatform.Form1.resources
+E:\design\taotiao\ashare\XiXiaoCenShare\TestPlatform\TestPlatform\bin\Debug\TestPlatform.exe.config
+E:\design\taotiao\ashare\XiXiaoCenShare\TestPlatform\TestPlatform\obj\Debug\TestPlatform.exe
+E:\design\taotiao\ashare\XiXiaoCenShare\TestPlatform\TestPlatform\obj\Debug\TestPlatform.pdb
